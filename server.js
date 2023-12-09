@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const { inject } = require("@vercel/analytics");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,6 +18,7 @@ mongoose
     console.log("Unable to connect with Database");
   });
 
+inject();
 // Define a schema for your data
 const itemSchema = new mongoose.Schema({
   name: String,
